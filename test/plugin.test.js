@@ -4,7 +4,7 @@ const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const http = require('node:http');
 const { EventEmitter } = require('node:events');
-const hap = require('@homebridge/hap-nodejs');
+const hap = require(process.env.PRANA_TEST_HAP_MODULE || '@homebridge/hap-nodejs');
 const { PranaClient, speedPercent, speedCommand } = require('../lib/client');
 const { PranaDevice } = require('../lib/device');
 const { PranaPlatform } = require('../lib/platform');
@@ -210,13 +210,13 @@ test('concurrent HomeKit commands are serialized and stale readings are rejected
 
 test('optional controls, Italian names and stable configured IDs survive restarts', async t => {
   const server = await mock(t);
-  const c = context({ language: 'it', devices: [{ id: 'kitchen', name: 'VMC Cucina', host: '127.0.0.1', port: server.port, exposeHeater: false }] });
+  const c = context({ language: 'it', devices: [{ id: 'prana-1', name: 'Ventilazione PRANA', host: '127.0.0.1', port: server.port, exposeHeater: false }] });
   t.after(() => c.platform.controllers.forEach(d => d.stop()));
   await c.platform.launch();
   assert.equal(c.registered.length, 1);
   const accessory = c.registered[0];
-  assert.equal(accessory.UUID, hap.uuid.generate('homebridge-prana-local:kitchen'));
-  assert.equal(accessory.getServiceById(hap.Service.Switch, 'switch-auto').displayName, 'VMC Cucina Automatico');
+  assert.equal(accessory.UUID, hap.uuid.generate('homebridge-prana-local:prana-1'));
+  assert.equal(accessory.getServiceById(hap.Service.Switch, 'switch-auto').displayName, 'Ventilazione PRANA Automatico');
   assert.equal(accessory.getServiceById(hap.Service.Switch, 'switch-heater'), undefined);
 });
 

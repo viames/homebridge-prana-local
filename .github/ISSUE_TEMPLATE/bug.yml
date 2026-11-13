@@ -1,0 +1,31 @@
+name: Bug report
+description: Report a reproducible problem with a PRANA unit or Homebridge integration.
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: "Please omit credentials, pairing codes, manufacture IDs, full configurations and private network details."
+  - type: input
+    id: model
+    attributes:
+      label: Printed model and firmware
+      placeholder: "210 G ERP PRO M23, firmware 49"
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Plugin, Homebridge, Node.js and operating system versions
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps, expected result and actual result
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Short redacted log excerpt
+      render: text

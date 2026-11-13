@@ -1,109 +1,110 @@
+<div align="center">
+
 # Homebridge Prana Local
 
-Control PRANA ventilation and heat-recovery units from Apple Home and Siri over your local Wi-Fi network. No cloud account, Bluetooth gateway, Home Assistant installation or firmware modification is needed.
+**Your PRANA ventilation, in Apple Home.**
 
-This is an independent community plugin, not an official or Homebridge-verified PRANA product.
+Control airflow, choose a mode and read your room's sensors.<br>
+Local Wi-Fi communication. No PRANA cloud account required.
 
-## Requirements and compatibility
+[![Latest release](https://img.shields.io/github/v/release/viames/homebridge-prana-local?color=6554c0&label=release)](https://github.com/viames/homebridge-prana-local/releases/latest)
+[![Tests](https://github.com/viames/homebridge-prana-local/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/viames/homebridge-prana-local/actions/workflows/test.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-296a56)](LICENSE)
 
-- A Wi-Fi PRANA unit exposing the local HTTP API, with **firmware 49 or newer**.
-- Homebridge 1.8+ or 2.x, with a supported Node.js release. The initial hardware validation uses Homebridge 2.4.0 and Node.js 22 on a Raspberry Pi 3 Model B+ (32 bit).
-- The PRANA unit and Homebridge must be reachable on the same trusted LAN.
-- A DHCP reservation is recommended. The API has no authentication and uses local HTTP: keep it inside your trusted LAN and do not forward its port to the internet.
+**English** · [Italiano](README.it.md)
 
-Initial target: **PRANA 210 G ERP PRO M23, firmware 49**. Other models using the same API may work, but are not hardware-verified. Device-specific capabilities and sensors vary.
+[Get started](#get-started) · [Compatibility](#compatibility) · [Settings](docs/configuration.md) · [Help](docs/troubleshooting.md)
 
-The device's `/info` API may use a different model family label from its printed commercial name. The optional `model` setting lets you preserve the printed label.
+</div>
 
-## Install from GitHub
+---
 
-In **Homebridge UI → Plugins → wrench menu → Install a specific plugin**, install:
+## A familiar place for your ventilation
 
-```text
-https://github.com/viames/homebridge-prana-local/releases/download/v0.1.0/homebridge-prana-local-0.1.0.tgz
+Add a compatible PRANA recuperator to the Homebridge you already use. Apple Home gets a fan, mode switches and the environmental sensors available on your unit. Include these controls in your own Home scenes and automations.
+
+| Airflow | Operating modes | Room conditions |
+| :--- | :--- | :--- |
+| On/off and speed control | AUTO and quiet AUTO+ | Indoor and outdoor temperatures |
+| Optional separate supply/extract controls | Night and Boost presets | Relative humidity |
+| Synchronized airflow mode | Winter and mini heater switches | Equivalent CO₂ estimate |
+
+Sensor and heater availability depend on the model. [See exactly how each control behaves →](docs/configuration.md#controls-and-sensors)
+
+```mermaid
+flowchart LR
+    A[Apple Home and Siri] <-->|HomeKit| B[Homebridge · Prana Local]
+    B <-->|Local Wi-Fi · HTTP| C[PRANA ventilation]
 ```
 
-Alternatively, from a terminal with access to the Homebridge plugin installation directory:
+Homebridge runs on your always-on host. The plugin talks directly to the PRANA unit; Home Assistant and a Bluetooth gateway are unnecessary. Remote use of Apple Home depends on your Apple home hub and Apple's requirements.
 
-```sh
-npm install https://github.com/viames/homebridge-prana-local/releases/download/v0.1.0/homebridge-prana-local-0.1.0.tgz
-```
+## Compatibility
 
-Run the command in your installation's plugin directory as its owning user. Use your usual Homebridge UI/installer to restart Homebridge after configuring the plugin. No build step or runtime dependencies are required. Source installations also work with `npm install viames/homebridge-prana-local`.
+| Component | Evidence |
+| :--- | :--- |
+| **PRANA 210 G ERP PRO M23 · firmware 49** | Tested on real hardware: sensor readings, speed, power and repeated power commands |
+| **Homebridge 2.4.0 · Node.js 22** | Hardware installation on Raspberry Pi 3 Model B+, 32 bit |
+| Node.js 22 / 24 / 26 | Automated tests in [GitHub Actions](https://github.com/viames/homebridge-prana-local/actions/workflows/test.yml) |
+| Homebridge 1.8.5 HomeKit library | Service tests pass with HAP-NodeJS 0.12.3 on Node 22; hardware installation uses 2.4.0 |
+| Other PRANA models with the same local API | Candidates for community testing; not hardware-verified |
+| Firmware below 49, Bluetooth-only units | Unsupported by this plugin |
 
-The release is distributed through GitHub; it is **not published on npm**, so it will not appear in the standard npm plugin search.
+**Before installing:** your PRANA must be connected to Wi-Fi, expose the local API and run firmware **49 or newer**. Check firmware in Prana Online 2.0. A Wi-Fi connection alone does not establish compatibility.
 
-## Configuration
+## Get started
 
-Use the plugin's settings form, or add this entry to `platforms` in Homebridge's `config.json`:
+### 1. Find the unit
 
-```json
-{
-  "platform": "PranaLocal",
-  "name": "Prana Local",
-  "language": "en",
-  "pollInterval": 10,
-  "devices": [
-    {
-      "id": "kitchen",
-      "name": "Kitchen ventilation",
-      "host": "192.168.1.50",
-      "model": "210G ERP PRO M23",
-      "separateFans": false,
-      "exposeHeater": true
-    }
-  ]
-}
-```
+Open your router's connected-device list and find the PRANA's IPv4 address. Reserve that address if your router supports DHCP reservations. Homebridge and the unit must be able to reach one another on the LAN.
 
-`id` is a unique, permanent identifier for each unit. Keep it unchanged if its IP changes so HomeKit retains the accessory identity. When omitted, the host is used instead. `language` supports `en` and `it` for initial service labels. Apple Home may retain previously assigned names.
+### 2. Install the release
 
-Optional settings: `port` (80), `timeout` (5000 ms), `co2Threshold` (1000 ppm). Polling is every 10 seconds by default, with a minimum of 5 seconds. Multiple units are supported through the `devices` array. Configure each physical unit once.
+[**Download the installable package**](https://github.com/viames/homebridge-prana-local/releases/latest) and follow the [installation guide](docs/installation.md) for your Homebridge setup.
 
-If Homebridge is already paired with Apple Home, new accessories are added through that bridge. A separately configured child bridge must be paired once in Apple Home. Add the ventilation accessory to its room and use **Show as Separate Tiles** if you want individual mode switches visible.
+The plugin is distributed on GitHub. It is **not listed on npm**, so the normal Homebridge plugin search will not find it.
 
-## Apple Home controls
+### 3. Add your unit
 
-| Service | Behavior |
-| --- | --- |
-| Ventilation fan | On/off and 0–100% speed, converted to the unit's discrete speed steps |
-| Fan automatic mode | Enables normal AUTO; manual mode exits AUTO and AUTO+ |
-| Automatic / Quiet automatic switches | Native PRANA AUTO and AUTO+ modes |
-| Night / Boost switches | Enable native presets; turning Night off selects step 2, turning Boost off selects the step below maximum |
-| Balanced airflow switch | Links/unlinks the two airflows using the unit's `bound` mode |
-| Winter / Mini heater switches | Native device functions; mini heater can be hidden with `exposeHeater: false` |
-| Temperature sensors | Indoor, outdoor, supply-after-recovery and exhaust-after-recovery, when reported |
-| Humidity | Indoor relative humidity |
-| Equivalent CO2 | PRANA's **CO2eq estimate**, in ppm, with a configurable abnormal-level threshold |
-| Optional separate fans | Independent supply/extract controls, following the unit's synchronized mode when enabled |
+Open the plugin's **Plugin Actions → Plugin Config** (or **Settings**, depending on UI version), add a device and enter its IP address. Choose a permanent ID such as `prana-1` and a name such as **PRANA ventilation**. The name and room are yours to choose; no room is assumed.
 
-The main fan controls both airflows. If they are separate, its on/off commands operate both without changing `bound`; its speed command sets both to the requested percentage. Its displayed speed is the higher of the two airflow speeds. Optional separate controls target the shared fan when the unit is in synchronized mode.
+![Real Homebridge settings with a generic device name and documentation address](docs/images/settings.png)
 
-Startup and polling only read the unit. Setting a speed explicitly exits automatic modes; the device determines Night/Boost from the selected speed. Leaving Night or Boost via its switch selects the adjacent normal speed and exits automatic modes. Power commands read the actual state first to avoid a firmware 49 quirk where redundant power requests toggle the motor. Speed commands use `/setSpeed` alone, which already turns the motor on. Heater and winter settings are only changed when their own switches are operated. The plugin does not override PRANA's built-in operating constraints.
+*The real Homebridge UI, shown with example data in a separate documentation instance. Replace the example address with your unit's address.*
 
-CO2eq is not a direct CO2 measurement and this plugin must not be used as a safety alarm. VOC (reported by PRANA in ppb) and atmospheric pressure are not exposed: Apple Home has no equivalent standard pressure tile, and its VOC density characteristic uses different units. Display brightness and sleep timers are also not exposed. They remain available in the manufacturer's app. Do not expect every PRANA app screen to have a corresponding Apple Home control.
+Prefer JSON? Copy the [minimal configuration](docs/configuration.md#minimal-configuration). The reference includes multiple-unit examples and every optional setting.
 
-## Reliability and troubleshooting
+### 4. Restart and open Apple Home
 
-- Commands and polling are serialized per unit. All control changes are followed by a state read.
-- Unreachable or invalid devices report a HomeKit communication error. The plugin retries automatically and resumes when connectivity returns.
-- Cached readings are rejected after they become stale. An IP pointing to another device is rejected at startup using the previously stored manufacture ID.
-- A firmware below 49 or HTTP 404 on `/info` usually means the local API is unavailable. Check firmware in **Prana Online 2.0**, and update through the manufacturer's app if required.
-- If the plugin starts before the unit is online, it retries without writing settings.
-- If adding optional sensors through a firmware update, restart the plugin to discover the new sensor services.
-- Use the Homebridge UI logs to diagnose connection errors. Do not share your complete Homebridge configuration, pairing PIN, account tokens or private network capture.
+Restart Homebridge once. Look for `connected (firmware …)` in the plugin log, then open Apple Home. An already paired bridge carries the new accessory into Home automatically. A new bridge or child bridge needs its own one-time pairing.
 
-## Development
+Assign the accessory to your chosen room. If controls are grouped, open the accessory settings and choose **Show as Separate Tiles**, where available.
 
-```sh
-npm ci
-npm run check
-npm test
-npm pack --dry-run
-```
+## Read before using the controls
 
-Tests use a mock local HTTP device and real HomeKit services from HAP-NodeJS. They cover startup without writes, speed scaling, separate/synchronized flow control, presets, sensor units, offline recovery, invalid firmware and payloads, timeouts and stable accessory identities.
+- **Manual speed exits AUTO/AUTO+.** Home's percentage slider maps to the unit's actual speed steps.
+- **Night and Boost have explicit exit behavior.** Turning Night off selects step 2; turning Boost off selects the step below maximum. Both actions exit automatic modes.
+- **Startup preserves settings.** The plugin reads the unit until you operate a control.
+- **CO₂eq is an estimate.** It is not a direct CO₂ measurement or a safety alarm.
+- VOC, pressure, display brightness and sleep timers remain in the manufacturer's app; they are not exposed by this release.
 
-The implementation uses PRANA's local API contract as documented by its integration in [Home Assistant](https://www.home-assistant.io/integrations/prana/) and the [PRANA API client](https://pypi.org/project/prana-api-client/). It is a separate JavaScript implementation; no Python or Home Assistant runtime is included. Homebridge plugin structure follows the [official developer documentation](https://developers.homebridge.io/).
+[Control behavior and limitations →](docs/configuration.md#controls-and-sensors)
 
-Contributions and hardware reports are welcome. Include your printed model, firmware, Homebridge/Node versions, and a redacted error message. Do not include credentials or manufacture identifiers.
+## Guides and support
+
+| I want to… | Open |
+| :--- | :--- |
+| Install, update or remove the plugin | [Installation guide](docs/installation.md) |
+| Configure one or several units | [Configuration reference](docs/configuration.md) |
+| Fix “No Response”, missing controls or connection errors | [Troubleshooting and FAQ](docs/troubleshooting.md) |
+| Read the guide in Italian | [Documentazione italiana](README.it.md) |
+| Report a problem or another supported model | [Open an issue](https://github.com/viames/homebridge-prana-local/issues/new/choose) |
+| Contribute code or run checks | [Contributing](CONTRIBUTING.md) |
+
+Keep the local HTTP API inside a trusted network. It has no authentication and must not be exposed through internet port forwarding. [Network details →](docs/troubleshooting.md#network-and-privacy)
+
+---
+
+Independent community software by [viames](https://github.com/viames), under the [MIT license](LICENSE). Not affiliated with PRANA or Apple and not verified by Homebridge. Product names belong to their respective owners.
+
+Built using the local API contract described by the [PRANA Home Assistant integration](https://www.home-assistant.io/integrations/prana/) and [PRANA API client](https://pypi.org/project/prana-api-client/). No Python or Home Assistant runtime is included.

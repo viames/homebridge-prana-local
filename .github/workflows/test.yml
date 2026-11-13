@@ -20,3 +20,16 @@ jobs:
       - run: npm run check
       - run: npm test
       - run: npm pack --dry-run
+  legacy-hap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm install --no-save --ignore-scripts hap-nodejs@0.12.3
+      - run: npm test
+        env:
+          PRANA_TEST_HAP_MODULE: hap-nodejs

@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.1
+
+- Reworked the project page with a concise overview, compatibility evidence, navigation and a real Homebridge settings screenshot using example data.
+- Added Italian documentation and dedicated installation, configuration, troubleshooting and contribution guides.
+- Added issue forms for bug reports and hardware compatibility reports.
+- Replaced room-specific public examples with generic device names and stable IDs.
+- Added service tests against HAP-NodeJS 0.12.3 (used by Homebridge 1.8.5) on Node.js 22.
+- Added the public display name to package metadata and included the documentation in the installable archive.
+- Ventilation control behavior is unchanged from 0.1.0.
+
 ## 0.1.0
 
 - Initial local Wi-Fi integration for PRANA units with firmware 49+.

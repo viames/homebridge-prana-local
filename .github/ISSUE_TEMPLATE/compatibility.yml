@@ -1,0 +1,23 @@
+name: Hardware compatibility report
+description: Share results from another model or firmware.
+title: "[Hardware] "
+body:
+  - type: input
+    id: model
+    attributes:
+      label: Printed model and firmware
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Plugin, Homebridge, Node.js and operating system versions
+    validations:
+      required: true
+  - type: textarea
+    id: tested
+    attributes:
+      label: Controls and sensors actually tested
+      description: "Separate confirmed behavior, failures and untested features. Do not include the manufacture ID or full API response."
+    validations:
+      required: true

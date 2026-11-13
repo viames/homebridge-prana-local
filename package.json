@@ -1,6 +1,6 @@
 {
   "name": "homebridge-prana-local",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Local Wi-Fi control of Prana ventilation units in Apple Home and Siri",
   "main": "index.js",
   "type": "commonjs",
@@ -32,7 +32,10 @@
     "config.schema.json",
     "README.md",
     "LICENSE",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "README.it.md",
+    "CONTRIBUTING.md",
+    "docs/"
   ],
   "scripts": {
     "test": "node --test",
@@ -40,5 +43,6 @@
   },
   "devDependencies": {
     "@homebridge/hap-nodejs": "^2.2.2"
-  }
+  },
+  "displayName": "Homebridge Prana Local"
 }

@@ -14,7 +14,7 @@
         "items": {
           "type": "object", "required": ["host", "id", "name"],
           "properties": {
-            "id": { "title": "Stable ID", "type": "string", "minLength": 1, "description": "Unique permanent label, e.g. kitchen. Keep this unchanged when the IP changes." },
+            "id": { "title": "Stable ID", "type": "string", "minLength": 1, "description": "Unique permanent label, e.g. prana-1. Keep this unchanged when the IP changes." },
             "name": { "title": "Name in Apple Home", "type": "string", "minLength": 1, "default": "Prana ventilation" },
             "host": { "title": "IP address or hostname", "type": "string", "minLength": 1, "description": "No http:// prefix. Use a DHCP reservation for reliable access." },
             "port": { "title": "Local HTTP port", "type": "integer", "minimum": 1, "maximum": 65535, "default": 80 },
