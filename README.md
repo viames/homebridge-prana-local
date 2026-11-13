@@ -10,11 +10,13 @@ Local Wi-Fi communication. No PRANA cloud account required.
 [![npm](https://img.shields.io/npm/v/homebridge-prana-local?label=npm)](https://www.npmjs.com/package/homebridge-prana-local)
 [![Latest release](https://img.shields.io/github/v/release/viames/homebridge-prana-local?color=6554c0&label=release)](https://github.com/viames/homebridge-prana-local/releases/latest)
 [![Tests](https://github.com/viames/homebridge-prana-local/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/viames/homebridge-prana-local/actions/workflows/test.yml)
-[![License: MIT](https://img.shields.io/badge/license-MIT-296a56)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/license-MIT-296a56)](https://github.com/viames/homebridge-prana-local/blob/main/LICENSE)
 
-**English** · [Italiano](README.it.md)
+[GitHub repository](https://github.com/viames/homebridge-prana-local)
 
-[npm](https://www.npmjs.com/package/homebridge-prana-local) · [Get started](#get-started) · [Compatibility](#compatibility) · [Settings](docs/configuration.md) · [Help](docs/troubleshooting.md)
+**English** · [Italiano](https://github.com/viames/homebridge-prana-local/blob/main/README.it.md)
+
+[npm](https://www.npmjs.com/package/homebridge-prana-local) · [Get started](#get-started) · [Compatibility](#compatibility) · [Settings](https://github.com/viames/homebridge-prana-local/blob/main/docs/configuration.md) · [Help](https://github.com/viames/homebridge-prana-local/blob/main/docs/troubleshooting.md)
 
 
 ---
@@ -29,7 +31,7 @@ Add a compatible PRANA recuperator to the Homebridge you already use. Apple Home
 | Optional separate supply/extract controls | Night and Boost presets | Relative humidity |
 | Synchronized airflow mode | Winter and mini heater switches | Equivalent CO₂ estimate |
 
-Sensor and heater availability depend on the model. [See exactly how each control behaves →](docs/configuration.md#controls-and-sensors)
+Sensor and heater availability depend on the model. [See exactly how each control behaves →](https://github.com/viames/homebridge-prana-local/blob/main/docs/configuration.md#controls-and-sensors)
 
 ```mermaid
 flowchart LR
@@ -60,17 +62,17 @@ Open your router's connected-device list and find the PRANA's IPv4 address. Rese
 
 ### 2. Install the release
 
-In **Homebridge UI → Plugins**, search for `homebridge-prana-local` and install it. The [npm package](https://www.npmjs.com/package/homebridge-prana-local) and [GitHub release archives](https://github.com/viames/homebridge-prana-local/releases/latest) contain the same ready-to-run plugin. Follow the [installation guide](docs/installation.md) for your Homebridge setup.
+In **Homebridge UI → Plugins**, search for `homebridge-prana-local` and install it. The [npm package](https://www.npmjs.com/package/homebridge-prana-local) and [GitHub release archives](https://github.com/viames/homebridge-prana-local/releases/latest) contain the same ready-to-run plugin. Follow the [installation guide](https://github.com/viames/homebridge-prana-local/blob/main/docs/installation.md) for your Homebridge setup.
 
 ### 3. Add your unit
 
 Open the plugin's **Plugin Actions → Plugin Config** (or **Settings**, depending on UI version), add a device and enter its IP address. Choose a permanent ID such as `prana-1` and a name such as **PRANA ventilation**. The name and room are yours to choose; no room is assumed.
 
-![Real Homebridge settings with a generic device name and documentation address](docs/images/settings.png)
+![Real Homebridge settings with a generic device name and documentation address](https://raw.githubusercontent.com/viames/homebridge-prana-local/main/docs/images/settings.png)
 
 *The real Homebridge UI, shown with example data in a separate documentation instance. Replace the example address with your unit's address.*
 
-Prefer JSON? Copy the [minimal configuration](docs/configuration.md#minimal-configuration). The reference includes multiple-unit examples and every optional setting.
+Prefer JSON? Copy the [minimal configuration](https://github.com/viames/homebridge-prana-local/blob/main/docs/configuration.md#minimal-configuration). The reference includes multiple-unit examples and every optional setting.
 
 ### 4. Restart and open Apple Home
 
@@ -86,23 +88,23 @@ Assign the accessory to your chosen room. If controls are grouped, open the acce
 - **CO₂eq is an estimate.** It is not a direct CO₂ measurement or a safety alarm.
 - VOC, pressure, display brightness and sleep timers remain in the manufacturer's app; they are not exposed by this release.
 
-[Control behavior and limitations →](docs/configuration.md#controls-and-sensors)
+[Control behavior and limitations →](https://github.com/viames/homebridge-prana-local/blob/main/docs/configuration.md#controls-and-sensors)
 
 ## Guides and support
 
 | I want to… | Open |
 | :--- | :--- |
-| Install, update or remove the plugin | [Installation guide](docs/installation.md) |
-| Configure one or several units | [Configuration reference](docs/configuration.md) |
-| Fix “No Response”, missing controls or connection errors | [Troubleshooting and FAQ](docs/troubleshooting.md) |
-| Read the guide in Italian | [Documentazione italiana](README.it.md) |
+| Install, update or remove the plugin | [Installation guide](https://github.com/viames/homebridge-prana-local/blob/main/docs/installation.md) |
+| Configure one or several units | [Configuration reference](https://github.com/viames/homebridge-prana-local/blob/main/docs/configuration.md) |
+| Fix “No Response”, missing controls or connection errors | [Troubleshooting and FAQ](https://github.com/viames/homebridge-prana-local/blob/main/docs/troubleshooting.md) |
+| Read the guide in Italian | [Documentazione italiana](https://github.com/viames/homebridge-prana-local/blob/main/README.it.md) |
 | Report a problem or another supported model | [Open an issue](https://github.com/viames/homebridge-prana-local/issues/new/choose) |
-| Contribute code or run checks | [Contributing](CONTRIBUTING.md) |
+| Contribute code or run checks | [Contributing](https://github.com/viames/homebridge-prana-local/blob/main/CONTRIBUTING.md) |
 
-Keep the local HTTP API inside a trusted network. It has no authentication and must not be exposed through internet port forwarding. [Network details →](docs/troubleshooting.md#network-and-privacy)
+Keep the local HTTP API inside a trusted network. It has no authentication and must not be exposed through internet port forwarding. [Network details →](https://github.com/viames/homebridge-prana-local/blob/main/docs/troubleshooting.md#network-and-privacy)
 
 ---
 
-Independent community software by [viames](https://github.com/viames), under the [MIT license](LICENSE). Not affiliated with PRANA or Apple and not verified by Homebridge. Product names belong to their respective owners.
+Independent community software by [viames](https://github.com/viames), under the [MIT license](https://github.com/viames/homebridge-prana-local/blob/main/LICENSE). Not affiliated with PRANA or Apple and not verified by Homebridge. Product names belong to their respective owners.
 
 Built using the local API contract described by the [PRANA Home Assistant integration](https://www.home-assistant.io/integrations/prana/) and [PRANA API client](https://pypi.org/project/prana-api-client/). No Python or Home Assistant runtime is included.

@@ -10,9 +10,11 @@ Comunicazione Wi-Fi locale, senza account cloud PRANA.
 [![npm](https://img.shields.io/npm/v/homebridge-prana-local?label=npm)](https://www.npmjs.com/package/homebridge-prana-local)
 [![Ultima versione](https://img.shields.io/github/v/release/viames/homebridge-prana-local?color=6554c0&label=release)](https://github.com/viames/homebridge-prana-local/releases/latest)
 [![Test](https://github.com/viames/homebridge-prana-local/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/viames/homebridge-prana-local/actions/workflows/test.yml)
-[![Licenza MIT](https://img.shields.io/badge/license-MIT-296a56)](LICENSE)
+[![Licenza MIT](https://img.shields.io/badge/license-MIT-296a56)](https://github.com/viames/homebridge-prana-local/blob/main/LICENSE)
 
-[English](README.md) · **Italiano**
+[Repository GitHub](https://github.com/viames/homebridge-prana-local)
+
+[English](https://github.com/viames/homebridge-prana-local/blob/main/README.md) · **Italiano**
 
 [npm](https://www.npmjs.com/package/homebridge-prana-local) · [Installazione](#installazione) · [Compatibilità](#compatibilità) · [Configurazione](#configurazione) · [Problemi comuni](#problemi-comuni)
 
@@ -66,10 +68,10 @@ In **Homebridge UI → Plugin**, cerca `homebridge-prana-local` e installalo. In
 
 ```sh
 cd /var/lib/homebridge
-npm install --omit=dev --ignore-scripts homebridge-prana-local@0.1.2
+npm install --omit=dev --ignore-scripts homebridge-prana-local@0.1.3
 ```
 
-Usa l'account proprietario della cartella. Via SSH potrebbe essere necessario passare all'utente del servizio Homebridge. Per un'installazione npm globale già esistente, usa invece `npm install -g --omit=dev --ignore-scripts homebridge-prana-local@0.1.2`. Segui le convenzioni di privilegi del tuo impianto. Gli archivi nelle release GitHub restano un'alternativa: consulta la [guida di installazione](docs/installation.md).
+Usa l'account proprietario della cartella. Via SSH potrebbe essere necessario passare all'utente del servizio Homebridge. Per un'installazione npm globale già esistente, usa invece `npm install -g --omit=dev --ignore-scripts homebridge-prana-local@0.1.3`. Segui le convenzioni di privilegi del tuo impianto. Gli archivi nelle release GitHub restano un'alternativa: consulta la [guida di installazione](https://github.com/viames/homebridge-prana-local/blob/main/docs/installation.md).
 
 Su Docker/NAS usa la procedura del tuo installer e la cartella dei plugin effettivamente usata da Homebridge, con persistenza dopo la ricreazione del container. Non installare una seconda copia di Homebridge per risolvere un errore di permessi.
 
@@ -79,7 +81,7 @@ Il pacchetto è pronto all'uso e non richiede build o dipendenze a runtime. La [
 
 In **Plugins → Homebridge Prana Local → Plugin Actions → Plugin Config** (UI 5.29), aggiungi l'unità. Altre versioni possono chiamare la voce **Impostazioni/Settings**. Scegli un ID stabile come `prana-1`, il nome **Ventilazione PRANA** o quello che preferisci, e inserisci l'indirizzo reale. Imposta `language` su `it` per le etichette italiane. Nessuna stanza è predefinita.
 
-![Impostazioni reali di Homebridge con dati di esempio e nome generico](docs/images/settings.png)
+![Impostazioni reali di Homebridge con dati di esempio e nome generico](https://raw.githubusercontent.com/viames/homebridge-prana-local/main/docs/images/settings.png)
 
 *Schermata di un'istanza separata per la documentazione, con dati di esempio. Non mostra la configurazione di un'abitazione.*
 
@@ -126,7 +128,7 @@ Se preferisci JSON, aggiungi questo oggetto all'array `platforms` esistente, con
 | `co2Threshold` | `1000` ppm, soglia dello stato CO₂eq anomalo; modulo 400–10000 |
 | `timeout` | `5000` ms; intervallo 500–30000 |
 
-Per più unità, aggiungi oggetti all'array `devices` con ID univoci. Configura ogni unità una sola volta. Quando cambia l'IP, modifica `host` e conserva `id` per mantenere l'identità HomeKit. [Esempio completo](docs/configuration.md#multiple-units).
+Per più unità, aggiungi oggetti all'array `devices` con ID univoci. Configura ogni unità una sola volta. Quando cambia l'IP, modifica `host` e conserva `id` per mantenere l'identità HomeKit. [Esempio completo](https://github.com/viames/homebridge-prana-local/blob/main/docs/configuration.md#multiple-units).
 
 ## Come funzionano i comandi
 
@@ -180,4 +182,4 @@ Il collegamento PRANA–Homebridge funziona sulla LAN senza cloud PRANA. Aggiorn
 
 ---
 
-Software indipendente della comunità, di [viames](https://github.com/viames), con [licenza MIT](LICENSE). Non affiliato a PRANA o Apple e non verificato dal progetto Homebridge. [Guide tecniche in inglese](docs/configuration.md) · [Contribuire](CONTRIBUTING.md).
+Software indipendente della comunità, di [viames](https://github.com/viames), con [licenza MIT](https://github.com/viames/homebridge-prana-local/blob/main/LICENSE). Non affiliato a PRANA o Apple e non verificato dal progetto Homebridge. [Guide tecniche in inglese](https://github.com/viames/homebridge-prana-local/blob/main/docs/configuration.md) · [Contribuire](https://github.com/viames/homebridge-prana-local/blob/main/CONTRIBUTING.md).

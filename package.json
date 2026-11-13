@@ -1,11 +1,11 @@
 {
   "name": "homebridge-prana-local",
-  "version": "0.1.2",
-  "description": "Local Wi-Fi control of Prana ventilation units in Apple Home and Siri",
+  "version": "0.1.3",
+  "description": "Bring compatible PRANA ventilation into Apple Home and Siri over local Wi-Fi, without a PRANA cloud account.",
   "main": "index.js",
   "type": "commonjs",
   "license": "MIT",
-  "author": "viames",
+  "author": "Viames Marino",
   "homepage": "https://github.com/viames/homebridge-prana-local#readme",
   "repository": {
     "type": "git",

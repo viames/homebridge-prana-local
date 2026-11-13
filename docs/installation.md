@@ -28,7 +28,7 @@ In the Homebridge UI terminal, use the standard storage directory:
 
 ```sh
 cd /var/lib/homebridge
-npm install --omit=dev --ignore-scripts homebridge-prana-local@0.1.2
+npm install --omit=dev --ignore-scripts homebridge-prana-local@0.1.3
 ```
 
 Use the account that owns that directory. An SSH session may need to switch to the Homebridge service account first. Do not change directory ownership or install another Homebridge copy to resolve a permissions error.
@@ -40,7 +40,7 @@ Use the account that owns that directory. An SSH session may need to switch to t
 If your existing Homebridge plugins are installed globally:
 
 ```sh
-npm install -g --omit=dev --ignore-scripts homebridge-prana-local@0.1.2
+npm install -g --omit=dev --ignore-scripts homebridge-prana-local@0.1.3
 ```
 
 Follow your existing privilege convention. Some system-wide setups need `sudo`; user-managed Node installations normally do not.
@@ -54,7 +54,7 @@ Use your container/NAS installer's documented plugin installation mechanism. Ins
 The [GitHub release](https://github.com/viames/homebridge-prana-local/releases/latest) also includes a ready-to-run archive. In the same plugin directory, you can install it with:
 
 ```sh
-npm install --omit=dev --ignore-scripts https://github.com/viames/homebridge-prana-local/releases/download/v0.1.2/homebridge-prana-local-0.1.2.tgz
+npm install --omit=dev --ignore-scripts https://github.com/viames/homebridge-prana-local/releases/download/v0.1.3/homebridge-prana-local-0.1.3.tgz
 ```
 
 An “install version” dialog may expect an npm name/version rather than an arbitrary URL. Use a terminal when your UI does not explicitly support archive URLs.

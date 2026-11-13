@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.3
+
+- Refresh the npm listing with the project cover, clearer package description and direct GitHub links.
+- Use absolute documentation and screenshot URLs so they also resolve on package catalogs.
+- Update installation examples to this documentation release; device-control runtime is unchanged.
+
 ## 0.1.2
 
 - Prepare npm distribution with the standard Homebridge plugin search and update path.
