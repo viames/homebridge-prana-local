@@ -18,9 +18,9 @@ For a read-only API check, open `http://YOUR-PRANA-IP/info` on the same network.
 
 The HTTP API normally uses **port 80**. A PRANA mDNS service may advertise port 12345; that is not the HTTP API port. [Connection checks](troubleshooting.md#the-unit-will-not-connect).
 
-## 2. Install the archive
+## 2. Install the plugin
 
-The plugin is on GitHub, **not npm**. Standard Homebridge plugin search will not find it. Open your Homebridge installation's terminal or connect to its host by SSH.
+In **Homebridge UI → Plugins**, search for `homebridge-prana-local` and install it. For terminal installation, open your Homebridge installation's terminal or connect to its host by SSH.
 
 ### Official Raspberry Pi image / apt installation
 
@@ -28,7 +28,7 @@ In the Homebridge UI terminal, use the standard storage directory:
 
 ```sh
 cd /var/lib/homebridge
-npm install --omit=dev --ignore-scripts https://github.com/viames/homebridge-prana-local/releases/download/v0.1.1/homebridge-prana-local-0.1.1.tgz
+npm install --omit=dev --ignore-scripts homebridge-prana-local@0.1.2
 ```
 
 Use the account that owns that directory. An SSH session may need to switch to the Homebridge service account first. Do not change directory ownership or install another Homebridge copy to resolve a permissions error.
@@ -40,14 +40,22 @@ Use the account that owns that directory. An SSH session may need to switch to t
 If your existing Homebridge plugins are installed globally:
 
 ```sh
-npm install -g --omit=dev --ignore-scripts https://github.com/viames/homebridge-prana-local/releases/download/v0.1.1/homebridge-prana-local-0.1.1.tgz
+npm install -g --omit=dev --ignore-scripts homebridge-prana-local@0.1.2
 ```
 
 Follow your existing privilege convention. Some system-wide setups need `sudo`; user-managed Node installations normally do not.
 
 ### Docker, NAS and other layouts
 
-Use your container/NAS installer's documented plugin installation mechanism. Install the same archive into **the directory used by the running Homebridge**, with persistent storage across container recreation.
+Use your container/NAS installer's documented plugin installation mechanism. Install the plugin into **the directory used by the running Homebridge**, with persistent storage across container recreation.
+
+### Alternative: GitHub archive
+
+The [GitHub release](https://github.com/viames/homebridge-prana-local/releases/latest) also includes a ready-to-run archive. In the same plugin directory, you can install it with:
+
+```sh
+npm install --omit=dev --ignore-scripts https://github.com/viames/homebridge-prana-local/releases/download/v0.1.2/homebridge-prana-local-0.1.2.tgz
+```
 
 An “install version” dialog may expect an npm name/version rather than an arbitrary URL. Use a terminal when your UI does not explicitly support archive URLs.
 
@@ -99,10 +107,10 @@ Assign the accessory to your chosen room.
 ## Updating and rollback
 
 1. Back up configuration/pairing data and read the [release notes](https://github.com/viames/homebridge-prana-local/releases).
-2. Use the original installation method and location with the new release archive URL.
+2. Use Homebridge UI or the original installation method and location with the new package version.
 3. Keep device IDs unchanged, then restart and check the connected message.
 
-GitHub releases are the update source; do not rely on npm search/update notifications. To roll back, install the previous archive in the same location. Restore configuration only when the release notes describe a configuration change. Removing the entire bridge from Apple Home is not an update step.
+Updates are available through npm and GitHub releases. To roll back, install the previous npm version or its matching archive in the same location. Restore configuration only when the release notes describe a configuration change. Removing the entire bridge from Apple Home is not an update step.
 
 ## Removing
 

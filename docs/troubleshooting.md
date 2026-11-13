@@ -6,7 +6,7 @@
 
 | Symptom | First check |
 | --- | --- |
-| Missing from plugin search | Expected: distributed on GitHub, not npm |
+| Missing from plugin search | Search the exact npm name `homebridge-prana-local`; GitHub archives are also available |
 | Missing after installation | Check the running Homebridge's plugin location; restart |
 | No `connected` message | IP, HTTP port, firmware and local API |
 | Apple Home “No Response” | Unit connectivity and plugin logs |

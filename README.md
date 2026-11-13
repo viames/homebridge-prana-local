@@ -60,9 +60,7 @@ Open your router's connected-device list and find the PRANA's IPv4 address. Rese
 
 ### 2. Install the release
 
-[**Download the installable package**](https://github.com/viames/homebridge-prana-local/releases/latest) and follow the [installation guide](docs/installation.md) for your Homebridge setup.
-
-The plugin is distributed on GitHub. It is **not listed on npm**, so the normal Homebridge plugin search will not find it.
+In **Homebridge UI → Plugins**, search for `homebridge-prana-local` and install it. The [npm package](https://www.npmjs.com/package/homebridge-prana-local) and [GitHub release archives](https://github.com/viames/homebridge-prana-local/releases/latest) contain the same ready-to-run plugin. Follow the [installation guide](docs/installation.md) for your Homebridge setup.
 
 ### 3. Add your unit
 

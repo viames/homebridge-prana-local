@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2
+
+- Prepare npm distribution with the standard Homebridge plugin search and update path.
+- Update English and Italian installation guides while retaining GitHub archives.
+- Ventilation control behavior is unchanged from 0.1.1.
+
 ## 0.1.1
 
 - Reworked the project page with a concise overview, compatibility evidence, navigation and a real Homebridge settings screenshot using example data.

@@ -58,18 +58,18 @@ Consulta l'elenco dei dispositivi connessi al router e individua l'indirizzo IPv
 
 Puoi controllare l'API aprendo `http://IP-DELLA-PRANA/info`: una risposta compatibile contiene `isValid: true` e firmware almeno 49. Non pubblicare la risposta completa, che include l'identificativo dell'unità. L'API HTTP usa normalmente la porta **80**, anche se il servizio mDNS ne annuncia un'altra.
 
-### 2. Installa il pacchetto GitHub
+### 2. Installa il plugin
 
 Prima fai un backup di configurazione e associazioni Homebridge. Conserva anche l'archivio del plugin: i pacchetti installati da GitHub possono non essere inclusi nei backup Homebridge.
 
-Il plugin **non è pubblicato su npm** e non compare nella normale ricerca dei plugin. Nell'immagine ufficiale Raspberry Pi, apri il terminale di Homebridge ed esegui:
+In **Homebridge UI → Plugin**, cerca `homebridge-prana-local` e installalo. In alternativa, nell'immagine ufficiale Raspberry Pi apri il terminale di Homebridge ed esegui:
 
 ```sh
 cd /var/lib/homebridge
-npm install --omit=dev --ignore-scripts https://github.com/viames/homebridge-prana-local/releases/download/v0.1.1/homebridge-prana-local-0.1.1.tgz
+npm install --omit=dev --ignore-scripts homebridge-prana-local@0.1.2
 ```
 
-Usa l'account proprietario della cartella. Via SSH potrebbe essere necessario passare all'utente del servizio Homebridge. Per un'installazione npm globale già esistente, usa invece `npm install -g --omit=dev --ignore-scripts` con lo stesso URL. Segui le convenzioni di privilegi del tuo impianto.
+Usa l'account proprietario della cartella. Via SSH potrebbe essere necessario passare all'utente del servizio Homebridge. Per un'installazione npm globale già esistente, usa invece `npm install -g --omit=dev --ignore-scripts homebridge-prana-local@0.1.2`. Segui le convenzioni di privilegi del tuo impianto. Gli archivi nelle release GitHub restano un'alternativa: consulta la [guida di installazione](docs/installation.md).
 
 Su Docker/NAS usa la procedura del tuo installer e la cartella dei plugin effettivamente usata da Homebridge, con persistenza dopo la ricreazione del container. Non installare una seconda copia di Homebridge per risolvere un errore di permessi.
 
@@ -152,7 +152,7 @@ VOC e pressione non sono esposti per differenze di unità/rappresentazione in Ho
 
 | Problema | Cosa controllare |
 | --- | --- |
-| Non trovo il plugin nella ricerca | È distribuito su GitHub, non npm |
+| Non trovo il plugin nella ricerca | Cerca il nome npm esatto `homebridge-prana-local`; puoi usare anche l'archivio GitHub |
 | Il plugin non compare dopo l'installazione | Cartella realmente usata da Homebridge e riavvio |
 | Non si collega alla PRANA | IP, porta 80, firmware 49+, risposta di `/info` |
 | “Nessuna risposta” in Casa | Connettività dell'unità e log; il plugin ritenta automaticamente |
@@ -166,7 +166,7 @@ Le letture diventano indisponibili dopo un errore di comunicazione; il recupero 
 
 ## Aggiornamento e rimozione
 
-Per aggiornare, fai un backup, leggi le note di release e installa il nuovo archivio con lo stesso metodo e nella stessa cartella. Mantieni gli ID e riavvia. Per tornare indietro installa l'archivio precedente. Le nuove versioni si trovano nelle release GitHub, non nelle notifiche npm.
+Per aggiornare, fai un backup, leggi le note di release e usa Homebridge UI oppure il metodo originale nella stessa cartella. Mantieni gli ID e riavvia. Per tornare indietro installa la versione npm precedente o l'archivio GitHub corrispondente.
 
 Per rimuovere una sola unità, elimina il suo oggetto da `devices` e riavvia il plugin ancora configurato. Per disinstallare tutto, elimina la piattaforma `PranaLocal` e usa il gestore dei plugin oppure `npm uninstall homebridge-prana-local` nella cartella originale (`-g` per installazioni globali). Se rimane un accessorio in cache, rimuovi solo quello PRANA tramite Homebridge. Non occorre riassociare gli altri accessori del bridge.
 
