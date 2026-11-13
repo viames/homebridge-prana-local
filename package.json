@@ -1,0 +1,44 @@
+{
+  "name": "homebridge-prana-local",
+  "version": "0.1.0",
+  "description": "Local Wi-Fi control of Prana ventilation units in Apple Home and Siri",
+  "main": "index.js",
+  "type": "commonjs",
+  "license": "MIT",
+  "author": "viames",
+  "homepage": "https://github.com/viames/homebridge-prana-local#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viames/homebridge-prana-local.git"
+  },
+  "bugs": {
+    "url": "https://github.com/viames/homebridge-prana-local/issues"
+  },
+  "keywords": [
+    "homebridge-plugin",
+    "supports-hap",
+    "prana",
+    "ventilation",
+    "recuperator",
+    "homekit"
+  ],
+  "engines": {
+    "node": "^20.19.0 || ^22.12.0 || ^24.0.0 || ^26.0.0",
+    "homebridge": "^1.8.0 || ^2.0.0"
+  },
+  "files": [
+    "index.js",
+    "lib/",
+    "config.schema.json",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "check": "node --check index.js && node --check lib/client.js && node --check lib/device.js && node --check lib/platform.js"
+  },
+  "devDependencies": {
+    "@homebridge/hap-nodejs": "^2.2.2"
+  }
+}
