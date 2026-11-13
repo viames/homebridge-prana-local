@@ -1,4 +1,4 @@
-<div align="center">
+![PRANA — Local ventilation. In Apple Home.](https://raw.githubusercontent.com/viames/homebridge-prana-local/main/.github/assets/cover.jpg)
 
 # Homebridge Prana Local
 
@@ -15,7 +15,6 @@ Local Wi-Fi communication. No PRANA cloud account required.
 
 [Get started](#get-started) · [Compatibility](#compatibility) · [Settings](docs/configuration.md) · [Help](docs/troubleshooting.md)
 
-</div>
 
 ---
 
