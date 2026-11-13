@@ -7,13 +7,14 @@
 Control airflow, choose a mode and read your room's sensors.<br>
 Local Wi-Fi communication. No PRANA cloud account required.
 
+[![npm](https://img.shields.io/npm/v/homebridge-prana-local?label=npm)](https://www.npmjs.com/package/homebridge-prana-local)
 [![Latest release](https://img.shields.io/github/v/release/viames/homebridge-prana-local?color=6554c0&label=release)](https://github.com/viames/homebridge-prana-local/releases/latest)
 [![Tests](https://github.com/viames/homebridge-prana-local/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/viames/homebridge-prana-local/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-296a56)](LICENSE)
 
 **English** · [Italiano](README.it.md)
 
-[Get started](#get-started) · [Compatibility](#compatibility) · [Settings](docs/configuration.md) · [Help](docs/troubleshooting.md)
+[npm](https://www.npmjs.com/package/homebridge-prana-local) · [Get started](#get-started) · [Compatibility](#compatibility) · [Settings](docs/configuration.md) · [Help](docs/troubleshooting.md)
 
 
 ---

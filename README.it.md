@@ -7,13 +7,14 @@
 Regola i flussi, scegli la modalità e consulta i sensori.<br>
 Comunicazione Wi-Fi locale, senza account cloud PRANA.
 
+[![npm](https://img.shields.io/npm/v/homebridge-prana-local?label=npm)](https://www.npmjs.com/package/homebridge-prana-local)
 [![Ultima versione](https://img.shields.io/github/v/release/viames/homebridge-prana-local?color=6554c0&label=release)](https://github.com/viames/homebridge-prana-local/releases/latest)
 [![Test](https://github.com/viames/homebridge-prana-local/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/viames/homebridge-prana-local/actions/workflows/test.yml)
 [![Licenza MIT](https://img.shields.io/badge/license-MIT-296a56)](LICENSE)
 
 [English](README.md) · **Italiano**
 
-[Installazione](#installazione) · [Compatibilità](#compatibilità) · [Configurazione](#configurazione) · [Problemi comuni](#problemi-comuni)
+[npm](https://www.npmjs.com/package/homebridge-prana-local) · [Installazione](#installazione) · [Compatibilità](#compatibilità) · [Configurazione](#configurazione) · [Problemi comuni](#problemi-comuni)
 
 
 ---
